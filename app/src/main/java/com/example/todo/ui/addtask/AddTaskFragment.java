@@ -1,4 +1,4 @@
-package com.example.todo.ui.dashboard;
+package com.example.todo.ui.addtask;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.R;
 
-public class DashboardFragment extends Fragment {
+public class AddTaskFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private AddTaskViewModel addTaskViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        addTaskViewModel =
+                ViewModelProviders.of(this).get(AddTaskViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_calendar, container, false);
+        final TextView textView = root.findViewById(R.id.text_calendar);
+        addTaskViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

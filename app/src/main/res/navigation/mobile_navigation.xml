@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.todo.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_calendar"
+        android:name="com.example.todo.ui.calendar.CalendarFragment"
+        android:label="@string/title_calendar"
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.todo.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_viewmods"
+        android:name="com.example.todo.ui.viewmods.ViewModsFragment"
+        android:label="@string/title_viewmods"
+        tools:layout="@layout/fragment_viewmods" />
+
+    <fragment
+        android:id="@+id/navigation_addtask"
+        android:name="com.example.todo.ui.addtask.AddTaskFragment"
+        android:label="@string/title_addtask"
+        tools:layout="@layout/fragment_addtask" />
 </navigation>

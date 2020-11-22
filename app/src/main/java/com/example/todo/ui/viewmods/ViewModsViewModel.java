@@ -1,16 +1,16 @@
-package com.example.todo.ui.notifications;
+package com.example.todo.ui.viewmods;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class ViewModsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public ViewModsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("This is viewmods fragment");
     }
 
     public LiveData<String> getText() {
