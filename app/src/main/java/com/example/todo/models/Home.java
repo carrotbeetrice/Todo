@@ -8,6 +8,8 @@ import android.util.Log;
 import com.example.todo.dbhelper.DatabaseHelper;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Home {
@@ -18,13 +20,21 @@ public class Home {
     private final Context context;
 
     public Home(Context context) {
+        goals = new ArrayList<>();
         this.context = context;
         dbHelper = new DatabaseHelper(context);
     }
 
-    public List<Task> getGoals(Context context) throws IOException {
+    public List<Task> getGoals() throws IOException {
         try {
-            String query = ""; //TODO: Update query
+            String query = "SELECT " +
+                    "CourseName, td.TaskName, td.DueDate, td.DueTime " +
+                    "from Tasks t " +
+                    "inner join UserCategories uc on t.CategoryId = uc.CategoryId " +
+                    "inner join Courses c on uc.CourseId = c.CourseId " +
+                    "inner join TaskDetails td on td.TaskId = t.TaskId " +
+                    "inner join TaskCompletion tc on t.TaskId = tc.TaskId " +
+                    "where tc.IsCompleted = 0 and td.DueDate > date('now');";
 
             dbHelper.createDataBase();
             SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -33,14 +43,20 @@ public class Home {
             cursor.moveToFirst();
 
             while (!cursor.isAfterLast()) {
-
+                String name = cursor.getString(0);
+                String description = cursor.getString(1);
+                String module = cursor.getString(2);
+                String dueDate = cursor.getString(3);
+                String dueTime = cursor.getString(4);
+                int importance = cursor.getInt(5);
+                goals.add(new Task(name, description, module, dueDate, dueTime, importance));
             }
 
-            return goals;
+
         } catch (IOException ex) {
             Log.e(TAG, "getGoals >>" + ex.toString());
-            throw ex;
         }
+        return goals;
     }
 
 }

@@ -7,11 +7,11 @@ public class Task {
     public String name;
     public String description;
     public String module;
-    public Date dueDate;
-    public Time dueTime;
+    public String dueDate;
+    public String dueTime;
     public int importance;
 
-    public Task(String name, String description, String module, Date dueDate, Time dueTime, int importance) {
+    public Task(String name, String description, String module, String dueDate, String dueTime, int importance) {
         this.name = name;
         this.description = description;
         this.module = module;
