@@ -25,10 +25,11 @@ public class Home {
         dbHelper = new DatabaseHelper(context);
     }
 
+    // TODO: FIND ERROR IN THIS METHOD (table not found smth)
     public List<Task> getGoals() throws IOException {
         try {
             String query = "SELECT " +
-                    "CourseName, td.TaskName, td.DueDate, td.DueTime " +
+                    "c.CourseName, td.TaskName, td.DueDate, td.DueTime " +
                     "from Tasks t " +
                     "inner join UserCategories uc on t.CategoryId = uc.CategoryId " +
                     "inner join Courses c on uc.CourseId = c.CourseId " +
@@ -54,6 +55,8 @@ public class Home {
 
 
         } catch (IOException ex) {
+            Log.e(TAG, "getGoals >>" + ex.toString());
+        } catch (Exception ex) {
             Log.e(TAG, "getGoals >>" + ex.toString());
         }
         return goals;
