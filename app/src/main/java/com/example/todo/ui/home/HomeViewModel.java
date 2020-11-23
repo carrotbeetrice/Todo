@@ -14,20 +14,20 @@ import java.util.List;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+//    private MutableLiveData<String> mText;
     private MutableLiveData<List<Task>> mGoals;
     private Home homeModel;
 
     public HomeViewModel(Context context) throws IOException {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+//        mText = new MutableLiveData<>();
+//        mText.setValue("This is home fragment");
         homeModel = new Home(context);
         mGoals.setValue(homeModel.getGoals());
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+//    public LiveData<String> getText() {
+//        return mText;
+//    }
 
     public LiveData<List<Task>> getGoals() {
         return mGoals;
