@@ -1,10 +1,5 @@
 package com.example.todo.models;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import com.example.todo.dbhelper.DatabaseHelper;
 
 import java.io.IOException;
@@ -13,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Home {
-    protected static final String TAG = "Home";
     private List<Task> goals;
     private double weeklyProgressPercentage;
     private DatabaseHelper dbHelper;
@@ -58,5 +52,4 @@ public class Home {
         }
         return goals;
     }
-
 }

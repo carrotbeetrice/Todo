@@ -21,7 +21,7 @@ public class HomeViewModel extends ViewModel {
     public HomeViewModel(Context context) throws IOException {
 //        mText = new MutableLiveData<>();
 //        mText.setValue("This is home fragment");
-        homeModel = new Home(context);
+       // homeModel = new Home(context);
         mGoals.setValue(homeModel.getGoals());
     }
 
