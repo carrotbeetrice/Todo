@@ -64,7 +64,7 @@ public class DailyGoalsAdapter extends ArrayAdapter<Task> {
         ViewHolder holder = (ViewHolder) rowView.getTag();
         Task goal = dailyGoals.get(position);
 
-        holder.textTaskName.setText(goal.name);
+        holder.textTaskName.setText(goal.taskName);
         holder.textTaskImportance.setText(generateImportance(goal.importance));
         holder.textModuleName.setText(goal.module);
         holder.textDueDate.setText(goal.dueDate);

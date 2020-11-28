@@ -40,10 +40,14 @@ public class HomeFragment extends Fragment {
         listView = root.findViewById(R.id.daily_tasks_list);
 
         try {
-            List<Task> dailyGoals = (List<Task>) homeViewModel.getGoals();
+            homeViewModel.getGoals().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
+                @Override
+                public void onChanged(List<Task> tasks) {
+                    DailyGoalsAdapter adapter = new DailyGoalsAdapter(getActivity(), tasks);
+                    listView.setAdapter(adapter);
+                }
+            });
 
-            DailyGoalsAdapter adapter = new DailyGoalsAdapter(getActivity(), dailyGoals);
-            listView.setAdapter(adapter);
         } catch (IOException e) {
             e.printStackTrace();
         }
