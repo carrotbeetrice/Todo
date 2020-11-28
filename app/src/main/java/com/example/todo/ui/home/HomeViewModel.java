@@ -10,26 +10,34 @@ import com.example.todo.models.Home;
 import com.example.todo.models.Task;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class HomeViewModel extends ViewModel {
 
 //    private MutableLiveData<String> mText;
     private MutableLiveData<List<Task>> mGoals;
-    private Home homeModel;
+    protected Home homeModel;
+    private MutableLiveData<Integer> weeklyProgress;
 
-    public HomeViewModel(Context context) throws IOException {
-//        mText = new MutableLiveData<>();
-//        mText.setValue("This is home fragment");
-        homeModel = new Home(context);
-        mGoals.setValue(homeModel.getGoals());
+    public HomeViewModel() {
+        // TODO: Implement class to programmatically determine weekly progress
+        weeklyProgress = new MutableLiveData<>();
+        weeklyProgress.setValue(75);
+
     }
 
-//    public LiveData<String> getText() {
-//        return mText;
-//    }
+    public void setContext(Context context) {
+        homeModel = new Home(context);
+    }
 
-    public LiveData<List<Task>> getGoals() {
+    public LiveData<Integer> getWeeklyProgress() {
+        return weeklyProgress;
+    }
+
+    public LiveData<List<Task>> getGoals() throws IOException {
+        mGoals = new MutableLiveData<>();
+        mGoals.setValue(homeModel.getGoals());
         return mGoals;
     }
 }
