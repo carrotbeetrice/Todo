@@ -21,9 +21,6 @@ public class HomeViewModel extends ViewModel {
     private MutableLiveData<Integer> weeklyProgress;
 
     public HomeViewModel() {
-//        mText = new MutableLiveData<>();
-//        mText.setValue("Weekly Progress");
-
         // TODO: Implement class to programmatically determine weekly progress
         weeklyProgress = new MutableLiveData<>();
         weeklyProgress.setValue(75);
@@ -33,10 +30,6 @@ public class HomeViewModel extends ViewModel {
     public void setContext(Context context) {
         homeModel = new Home(context);
     }
-
-//    public LiveData<String> getText() {
-//        return mText;
-//    }
 
     public LiveData<Integer> getWeeklyProgress() {
         return weeklyProgress;

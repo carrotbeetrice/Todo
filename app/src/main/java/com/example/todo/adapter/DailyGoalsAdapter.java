@@ -37,8 +37,6 @@ public class DailyGoalsAdapter extends ArrayAdapter<Task> {
         this.dailyGoals = dailyGoals;
     }
 
-    //TODO: Finish implementing adapter, test in HomeViewModel
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
