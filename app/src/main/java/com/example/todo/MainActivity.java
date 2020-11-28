@@ -1,5 +1,7 @@
 package com.example.todo;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +28,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-    }
 
+        // Check if app is open for the first time
+        SharedPreferences preferences = getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+        String firstTime = preferences.getString("firstTimeInstall", "");
+
+        if(firstTime.equals("yes")) {
+            // If app was opened for the first time
+            Intent intent = new Intent(MainActivity.this, GetStarted.class);
+            startActivity(intent);
+        }
+
+        else {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("firstTimeInstall", "yes");
+            editor.apply();
+        }
+    }
 }
