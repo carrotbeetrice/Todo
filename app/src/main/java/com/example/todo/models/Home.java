@@ -22,14 +22,13 @@ public class Home {
     public List<Task> getGoals() throws IOException {
         try {
             String query = "SELECT " +
-                    "c.CourseName, td.TaskName, td.DueDate, td.DueTime, i.ImportanceLevel " +
+                    "CourseName, td.TaskName, td.DueDate, td.DueTime " +
                     "from Tasks t " +
                     "inner join UserCategories uc on t.CategoryId = uc.CategoryId " +
                     "inner join Courses c on uc.CourseId = c.CourseId " +
                     "inner join TaskDetails td on td.TaskId = t.TaskId " +
                     "inner join TaskCompletion tc on t.TaskId = tc.TaskId " +
-                    "inner join Importance i on i.ImportanceId = td.ImportanceId " +
-                    "where tc.IsCompleted = 0;";
+                    "where tc.IsCompleted = 0 and td.DueDate > date('now');";
 
             dbHelper.createDataBase();
             SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -38,19 +37,17 @@ public class Home {
             cursor.moveToFirst();
 
             while (!cursor.isAfterLast()) {
-                String module = cursor.getString(0);
-                String taskName = cursor.getString(1);
-                String dueDate = cursor.getString(2);
-                String dueTime = cursor.getString(3);
-                int importance = cursor.getInt(4);
-                goals.add(new Task(module, taskName, dueDate, dueTime, importance));
-                cursor.moveToNext();
+                String name = cursor.getString(0);
+                String description = cursor.getString(1);
+                String module = cursor.getString(2);
+                String dueDate = cursor.getString(3);
+                String dueTime = cursor.getString(4);
+                int importance = cursor.getInt(5);
+                goals.add(new Task(name, description, module, dueDate, dueTime, importance));
             }
 
 
         } catch (IOException ex) {
-            Log.e(TAG, "getGoals >>" + ex.toString());
-        } catch (Exception ex) {
             Log.e(TAG, "getGoals >>" + ex.toString());
         }
         return goals;
