@@ -15,10 +15,9 @@ import java.util.List;
 
 public class AddTaskViewModel extends ViewModel {
 
-//    private MutableLiveData<String> mText;
     protected AddTaskModel addTaskModel;
-    private MutableLiveData<List<Courses>> mCourses;
-    private MutableLiveData<List<Reminders>> mReminders;
+    private MutableLiveData<List<String>> mCourses;
+    // private MutableLiveData<List<Reminders>> mReminders;
     protected Task task;
 
     public AddTaskViewModel() {
@@ -30,16 +29,16 @@ public class AddTaskViewModel extends ViewModel {
         addTaskModel.getDropDownData();
     }
 
-    public LiveData<List<Courses>> getCourses() {
+    public LiveData<List<String>> getCourses() {
         mCourses = new MutableLiveData<>();
         mCourses.setValue(addTaskModel.getCourses());
         return mCourses;
     }
 
-    public LiveData<List<Reminders>> getReminders() {
-        mReminders = new MutableLiveData<>();
-        mReminders.setValue(addTaskModel.getReminders());
-        return mReminders;
-    }
+//    public LiveData<List<Reminders>> getReminders() {
+//        mReminders = new MutableLiveData<>();
+//        mReminders.setValue(addTaskModel.getReminders());
+//        return mReminders;
+//    }
 
 }

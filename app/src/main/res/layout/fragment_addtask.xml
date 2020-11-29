@@ -71,12 +71,11 @@
                 android:text="@string/module_label"
                 android:textSize="20sp"
                 android:gravity="left" />
-            <AutoCompleteTextView
+            <Spinner
                 android:id="@+id/module_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Start typing to select module"
-                android:completionThreshold="5" />
+                android:hint="Start typing to select module" />
         </LinearLayout>
 
         <!--Due Date-->

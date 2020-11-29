@@ -4,7 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 
 public class Task {
-    public int courseId;
+    public String courseCode;
     public String module;
     public String taskName;
     public String description;
