@@ -35,7 +35,7 @@ public class SetUp extends AppCompatActivity {
         setUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent setUpIntent = new Intent(getApplicationContext(), SplashScreen.class);
+                Intent setUpIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(setUpIntent);
             }
         });
