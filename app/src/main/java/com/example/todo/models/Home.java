@@ -9,7 +9,6 @@ import com.example.todo.dbhelper.DatabaseHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Home {
@@ -18,7 +17,6 @@ public class Home {
     private double weeklyProgressPercentage;
     private DatabaseHelper dbHelper;
     private final Context context;
-    protected static final String TAG = "Home";
 
     public Home(Context context) {
         goals = new ArrayList<>();
