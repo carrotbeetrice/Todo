@@ -29,12 +29,21 @@ public class AddTaskFragment extends Fragment {
                 ViewModelProviders.of(this).get(AddTaskViewModel.class);
         View root = inflater.inflate(R.layout.fragment_addtask, container, false);
 
-        AutoCompleteTextView editText = (AutoCompleteTextView) root.findViewById(R.id.actv);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.select_dialog_item,MODS);
-        editText.setAdapter(adapter);
+//        AutoCompleteTextView editText = (AutoCompleteTextView) root.findViewById(R.id.actv);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.select_dialog_item,MODS);
+//        editText.setAdapter(adapter);
 
         return root;
 
 
     }
+
+    private void setWidgetReferences(){
+
+    }
+
+    private void setEventListeners() {
+
+    }
+
 }

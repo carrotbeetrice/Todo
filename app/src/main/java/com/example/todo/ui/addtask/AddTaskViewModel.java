@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.todo.models.AddTaskModel;
 import com.example.todo.models.Courses;
 import com.example.todo.models.Reminders;
+import com.example.todo.models.Task;
 
 import java.util.List;
 
@@ -18,8 +19,10 @@ public class AddTaskViewModel extends ViewModel {
     protected AddTaskModel addTaskModel;
     private MutableLiveData<List<Courses>> mCourses;
     private MutableLiveData<List<Reminders>> mReminders;
+    protected Task task;
 
     public AddTaskViewModel() {
+        task = new Task();
     }
 
     public void setAddTaskModel(Context context) {
