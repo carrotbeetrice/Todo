@@ -5,7 +5,4 @@
     <string name="title_viewmods">View Modules</string>
     <string name="title_addtask">Add Task</string>
     <string name="label_progress_bar">Weekly Progress</string>
-    <string name="welcome">Welcome Back,</string>
-    <string name="user">weAreNumberone</string>
-    <string name="quote_of_the_day">Quote Of The Day</string>
 </resources>
