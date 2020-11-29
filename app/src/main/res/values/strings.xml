@@ -5,18 +5,7 @@
     <string name="title_viewmods">View Modules</string>
     <string name="title_addtask">Add Task</string>
     <string name="label_progress_bar">Weekly Progress</string>
-
-    <!-- GetStarted -->
-    <string name="welcome_to">Welcome to</string>
-    <string name="todo">Todo</string>
-    <string name="todo_description">Productivity. Time management. Focus.</string>
-    <string name="get_started">Get Started</string>
-
-    <!-- SetUp -->
-    <string name="back">Back</string>
-    <string name="create_account">Create Account</string>
-    <string name="create_account_description">Enter your name and student ID to create a new account.</string>
-    <string name="name">Name</string>
-    <string name="student_id">Student ID</string>
-
+    <string name="welcome">Welcome Back,</string>
+    <string name="user">weAreNumberone</string>
+    <string name="quote_of_the_day">Quote Of The Day</string>
 </resources>
