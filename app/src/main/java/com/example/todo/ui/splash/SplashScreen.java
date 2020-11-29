@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.todo.MainActivity;
+import com.example.todo.ui.main.MainActivity;
 import com.example.todo.R;
 import java.util.ArrayList;
 import java.util.List;
