@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,19 +19,22 @@ import com.example.todo.R;
 public class AddTaskFragment extends Fragment {
 
     private AddTaskViewModel addTaskViewModel;
+    private final String[] MODS = new String[]{
+            "shit","fuk","pee","poo","master of all 4 shitterments"
+    };
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         addTaskViewModel =
                 ViewModelProviders.of(this).get(AddTaskViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_calendar, container, false);
-        final TextView textView = root.findViewById(R.id.text_calendar);
-        addTaskViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        View root = inflater.inflate(R.layout.fragment_addtask, container, false);
+
+        AutoCompleteTextView editText = (AutoCompleteTextView) root.findViewById(R.id.actv);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.select_dialog_item,MODS);
+        editText.setAdapter(adapter);
+
         return root;
+
+
     }
 }
