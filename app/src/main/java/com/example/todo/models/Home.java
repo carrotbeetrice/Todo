@@ -53,13 +53,18 @@ public class Home {
                 cursor.moveToNext();
             }
 
+            cursor.close();
+            db.close();
 
         } catch (IOException ex) {
             Log.e(TAG, "getGoals >>" + ex.toString());
         } catch (Exception ex) {
             Log.e(TAG, "getGoals >>" + ex.toString());
+        } finally {
+
+            return goals;
         }
-        return goals;
+
     }
 
 }

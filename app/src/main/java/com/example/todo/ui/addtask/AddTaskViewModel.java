@@ -21,7 +21,11 @@ public class AddTaskViewModel extends ViewModel {
     protected Task task;
 
     public AddTaskViewModel() {
-        task = new Task();
+    }
+
+    public void setTask(String taskName, String taskDescription, String module, String dueDate,
+                        String dueTime, int importance) {
+        task = new Task(module, taskName, taskDescription, dueDate, dueTime, importance);
     }
 
     public void setAddTaskModel(Context context) {
@@ -33,6 +37,10 @@ public class AddTaskViewModel extends ViewModel {
         mCourses = new MutableLiveData<>();
         mCourses.setValue(addTaskModel.getCourses());
         return mCourses;
+    }
+
+    public boolean taskAdded() {
+        return addTaskModel.insertTaskSuccess(task);
     }
 
 //    public LiveData<List<Reminders>> getReminders() {

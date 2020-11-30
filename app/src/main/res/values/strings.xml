@@ -5,8 +5,6 @@
     <string name="title_viewmods">View Modules</string>
     <string name="title_addtask">Add Task</string>
     <string name="label_progress_bar">Weekly Progress</string>
-
-    <!--Add Task form labels-->
     <string name="task_name_label">Task Name</string>
     <string name="task_description_label">Task Description</string>
     <string name="module_label">Select Module</string>
@@ -18,4 +16,7 @@
     <string name="cue_reminders_label">Cue Reminders</string>
     <string name="clear_button_label">Clear</string>
     <string name="add_task_button_label">Add Task</string>
+    <string name="welcome">Welcome Back,</string>
+    <string name="user">weAreNumberone</string>
+    <string name="quote_of_the_day">Quote Of The Day</string>
 </resources>

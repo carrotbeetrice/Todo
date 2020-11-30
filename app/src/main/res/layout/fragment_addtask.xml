@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/addtask_scrollview"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -160,8 +161,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="3"
-                android:stepSize="1"
-                android:isIndicator="true" />
+                android:stepSize="1.0"
+                android:isIndicator="false" />
 
         </LinearLayout>
 
