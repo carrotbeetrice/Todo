@@ -39,7 +39,6 @@ public class AddTaskViewModel extends ViewModel {
         return mCourses;
     }
 
-    // TODO - implement database writing part
     public boolean taskAdded() {
         return addTaskModel.insertTaskSuccess(task);
     }
