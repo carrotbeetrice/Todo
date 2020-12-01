@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.todo.ui.main.MainActivity;
 import com.example.todo.R;
 import java.util.ArrayList;
@@ -16,15 +20,10 @@ import java.util.List;
 
 public class SplashScreen extends AppCompatActivity {
 
-    // Display splash screen for 3 seconds
-    private static int SPLASH_TIME_OUT = 3000;
-
-    // Widgets
-    TextView quoteField;
-    TextView attributionField;
-    TextView welcome;
-    TextView user;
-    TextView quoteOfTheDay;
+    private static int SPLASH_TIME_OUT = 3000; // Display splash screen for 3 seconds
+    TextView quoteField, attributionField, welcomeLabel, userName, quoteOfTheDay; // Widgets
+    SplashScreenViewModel splashScreenViewModel;
+    boolean isFirstTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,15 +31,25 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.splash_screen);
 
         setWidgetReferences();
-        welcome.setText(R.string.welcome);
-        user.setText(R.string.user);
+
+        // Access the viewmodel
+        splashScreenViewModel = ViewModelProviders.of(this).get(SplashScreenViewModel.class);
+        splashScreenViewModel.setContext(this);
+
+        splashScreenViewModel.getUserName().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if (s.isEmpty()) {
+                    isFirstTime = true;
+                    welcomeLabel.setText(R.string.welcome);
+                } else {
+                    userName.setText(s);
+                    welcomeLabel.setText(R.string.welcome_back);
+                }
+            }
+        });
+
         quoteOfTheDay.setText(R.string.quote_of_the_day);
-
-
-        // Get quote stuff
-//        Quote quoteSource = new Quote();
-//        quoteField.setText(quoteSource.getQuote());
-//        attributionField.setText(quoteSource.getAttribution());
 
         new GetDailyQuote().execute();
 
@@ -56,8 +65,8 @@ public class SplashScreen extends AppCompatActivity {
     private void setWidgetReferences() {
         quoteField = findViewById(R.id.quote_field);
         attributionField = findViewById(R.id.attribution_field);
-        welcome = findViewById(R.id.welcome);
-        user = findViewById(R.id.user);
+        welcomeLabel = findViewById(R.id.welcome);
+        userName = findViewById(R.id.user);
         quoteOfTheDay = findViewById(R.id.quote_of_the_day);
 
     }

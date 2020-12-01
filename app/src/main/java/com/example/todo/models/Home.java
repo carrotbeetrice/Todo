@@ -25,7 +25,7 @@ public class Home {
         dbHelper = new DatabaseHelper(context);
     }
 
-    public List<Task> getGoals() throws IOException {
+    public List<Task> getGoals() {
         try {
             String query = "SELECT " +
                     "c.CourseName, td.TaskName, td.DueDate, td.DueTime, i.ImportanceLevel " +
