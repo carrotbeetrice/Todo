@@ -5,4 +5,34 @@
     <string name="title_viewmods">View Modules</string>
     <string name="title_addtask">Add Task</string>
     <string name="label_progress_bar">Weekly Progress</string>
+    <string name="task_name_label">Task Name</string>
+    <string name="task_description_label">Task Description</string>
+    <string name="module_label">Select Module</string>
+    <string name="due_date_label">Due Date</string>
+    <string name="select_date_label">Select Date</string>
+    <string name="due_time_label">Due Time</string>
+    <string name="select_time_label">Select Time</string>
+    <string name="importance_label">Importance Level</string>
+    <string name="cue_reminders_label">Cue Reminders</string>
+    <string name="clear_button_label">Clear</string>
+    <string name="add_task_button_label">Add Task</string>
+
+    <!-- GetStarted -->
+    <string name="welcome_to">Welcome to</string>
+    <string name="todo">Todo</string>
+    <string name="todo_description">Productivity. Time management. Focus.</string>
+    <string name="get_started">Get Started</string>
+
+    <!-- SetUp -->
+    <string name="back">Back</string>
+    <string name="create_account">Create Account</string>
+    <string name="create_account_description">Enter your name and student ID to create a new account.</string>
+    <string name="name">Name</string>
+    <string name="student_id">Student ID</string>
+
+    <!-- Splash Screen -->
+    <string name="welcome">Welcome Back,</string>
+    <string name="user">weAreNumberone</string>
+    <string name="quote_of_the_day">Quote Of The Day</string>
+
 </resources>
