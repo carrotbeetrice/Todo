@@ -66,6 +66,23 @@ public class ModsModel {
         }
 
     }
+//    public void update(int position){
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        db.update("c.CourseName, td.TaskName, td.DueDate, td.DueTime  " +
+//                "from Tasks t " +
+//                "inner join UserCategories uc on t.CategoryId = uc.CategoryId " +
+//                "inner join Courses c on uc.CourseId = c.CourseId " +
+//                "inner join TaskDetails td on td.TaskId = t.TaskId " +
+//                "inner join TaskCompletion tc on t.TaskId = tc.TaskId " +
+//                "where tc.IsCompleted = 0 " +
+//                "order by DueDate asc, DueTime asc ", "tc.IsCompleted = 1", "t.CategoryID = position", null);
+//
+//
+//    }
+
+
+
+
 
 }
 
