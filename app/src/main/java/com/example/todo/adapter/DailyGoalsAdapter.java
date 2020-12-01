@@ -1,7 +1,6 @@
 package com.example.todo.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,13 @@ import androidx.annotation.Nullable;
 import com.example.todo.R;
 import com.example.todo.models.Task;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class DailyGoalsAdapter extends ArrayAdapter<Task> {
     private final Activity context;
     private final List<Task> dailyGoals;
 
-    static class ViewHolder {
+    static class TaskViewHolder {
         public TextView textTaskName;
         public TextView textTaskImportance;
         public TextView textModuleName;
@@ -48,18 +44,18 @@ public class DailyGoalsAdapter extends ArrayAdapter<Task> {
             rowView = inflater.inflate(R.layout.home_row_item, null);
 
             // Configure view holder
-            ViewHolder viewHolder = new ViewHolder();
-            viewHolder.textTaskName = (TextView) rowView.findViewById(R.id.task_name);
-            viewHolder.textTaskImportance = (TextView) rowView.findViewById(R.id.task_importance);
-            viewHolder.textModuleName = (TextView) rowView.findViewById(R.id.module_name);
-            viewHolder.textDueDate = (TextView) rowView.findViewById(R.id.due_date);
-            viewHolder.textDueTime = (TextView) rowView.findViewById(R.id.due_time);
+            TaskViewHolder taskViewHolder = new TaskViewHolder();
+            taskViewHolder.textTaskName = (TextView) rowView.findViewById(R.id.task_name);
+            taskViewHolder.textTaskImportance = (TextView) rowView.findViewById(R.id.task_importance);
+            taskViewHolder.textModuleName = (TextView) rowView.findViewById(R.id.module_name);
+            taskViewHolder.textDueDate = (TextView) rowView.findViewById(R.id.due_date);
+            taskViewHolder.textDueTime = (TextView) rowView.findViewById(R.id.due_time);
 
-            rowView.setTag(viewHolder);
+            rowView.setTag(taskViewHolder);
         }
 
         // Fill data
-        ViewHolder holder = (ViewHolder) rowView.getTag();
+        TaskViewHolder holder = (TaskViewHolder) rowView.getTag();
         Task goal = dailyGoals.get(position);
 
         holder.textTaskName.setText(goal.taskName);
