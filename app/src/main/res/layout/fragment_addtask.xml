@@ -206,6 +206,10 @@
                 android:text="@string/add_task_button_label"/>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
     </LinearLayout>
 
 </ScrollView>
