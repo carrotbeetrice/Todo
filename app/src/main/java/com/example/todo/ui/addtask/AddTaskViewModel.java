@@ -9,17 +9,23 @@ import androidx.lifecycle.ViewModel;
 import com.example.todo.models.AddTaskModel;
 import com.example.todo.models.Courses;
 import com.example.todo.models.Reminders;
+import com.example.todo.models.Task;
 
 import java.util.List;
 
 public class AddTaskViewModel extends ViewModel {
 
-//    private MutableLiveData<String> mText;
     protected AddTaskModel addTaskModel;
-    private MutableLiveData<List<Courses>> mCourses;
-    private MutableLiveData<List<Reminders>> mReminders;
+    private MutableLiveData<List<String>> mCourses;
+    // private MutableLiveData<List<Reminders>> mReminders;
+    protected Task task;
 
     public AddTaskViewModel() {
+    }
+
+    public void setTask(String taskName, String taskDescription, String module, String dueDate,
+                        String dueTime, int importance) {
+        task = new Task(module, taskName, taskDescription, dueDate, dueTime, importance);
     }
 
     public void setAddTaskModel(Context context) {
@@ -27,16 +33,21 @@ public class AddTaskViewModel extends ViewModel {
         addTaskModel.getDropDownData();
     }
 
-    public LiveData<List<Courses>> getCourses() {
+    public LiveData<List<String>> getCourses() {
         mCourses = new MutableLiveData<>();
         mCourses.setValue(addTaskModel.getCourses());
         return mCourses;
     }
 
-    public LiveData<List<Reminders>> getReminders() {
-        mReminders = new MutableLiveData<>();
-        mReminders.setValue(addTaskModel.getReminders());
-        return mReminders;
+    // TODO - implement database writing part
+    public boolean taskAdded() {
+        return addTaskModel.insertTaskSuccess(task);
     }
+
+//    public LiveData<List<Reminders>> getReminders() {
+//        mReminders = new MutableLiveData<>();
+//        mReminders.setValue(addTaskModel.getReminders());
+//        return mReminders;
+//    }
 
 }
