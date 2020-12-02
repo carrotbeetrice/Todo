@@ -1,4 +1,4 @@
-package com.example.todo.AddMods;
+package com.example.todo.models;
 
 import android.content.Context;
 import android.database.Cursor;

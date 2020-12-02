@@ -2,32 +2,20 @@ package com.example.todo.ui.viewmods;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.style.AlignmentSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.todo.AddMods.AddModsActivity;
+import com.example.todo.ui.addmods.AddModsActivity;
 import com.example.todo.R;
 import com.example.todo.adapter.ModsAdapter;
-import com.example.todo.adapter.ModulesAdapter;
-import com.example.todo.models.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.io.IOException;
-import java.util.List;
 
 public class ViewModsFragment extends Fragment {
 

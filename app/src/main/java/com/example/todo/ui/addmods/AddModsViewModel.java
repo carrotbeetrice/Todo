@@ -1,4 +1,4 @@
-package com.example.todo.AddMods;
+package com.example.todo.ui.addmods;
 
 
 import android.content.Context;
@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.todo.models.AddTaskModel;
+import com.example.todo.models.AddModsModel;
 
 import java.util.List;
 
