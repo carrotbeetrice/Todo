@@ -33,16 +33,17 @@ public class ViewModsViewModel extends ViewModel {
         modules.setValue(modsModel.getMods());
         return modules;
     }
+}
 
-    //    public LiveData<List<Task>> getMods() throws IOException {
+//        public LiveData<List<Task>> getMods() throws IOException {
 //        mMods = new MutableLiveData<>();
 //        mMods.setValue(modsModel.getMods());
 //        return mMods;
-//
+
 //    }
-
-    public void updateMods(int position){
-        modsModel.update(position);
-    }
-
-}
+//
+//    public void updateMods(int position){
+//        modsModel.update(position);
+//    }
+//
+//}
