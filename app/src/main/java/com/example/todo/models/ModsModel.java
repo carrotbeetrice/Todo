@@ -18,40 +18,30 @@ public class ModsModel {
     protected static final String TAG = "Mods";
     private DatabaseHelper dbHelper;
     private final Context context;
-    private List<Task> mods;
-
+    private List<Module> modules;
 
     public ModsModel(Context context){
         this.context = context;
-        mods = new ArrayList<>();
+        modules = new ArrayList<>();
         dbHelper = new DatabaseHelper(context);
     }
 
-    public List<Task> getMods() throws IOException{
+    // TODO: Just change everything here honestly
+    public List<Module> getMods() {
         try {
-            String query = "SELECT " +
-                    "c.CourseName, td.TaskName, td.DueDate, td.DueTime  " +
-                    "from Tasks t " +
-                    "inner join UserCategories uc on t.CategoryId = uc.CategoryId " +
-                    "inner join Courses c on uc.CourseId = c.CourseId " +
-                    "inner join TaskDetails td on td.TaskId = t.TaskId " +
-                    "inner join TaskCompletion tc on t.TaskId = tc.TaskId " +
-                    "where tc.IsCompleted = 0 " +
-                    "order by DueDate asc, DueTime asc ";
+            String query = "Select uc.CategoryId, c.CourseCode, c.CourseName from UserCategories uc " +
+                    "inner join Courses c on uc.CourseId = c.CourseId;";
 
             dbHelper.createDataBase();
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
             Cursor cursor = db.rawQuery(query, null);
-            cursor.moveToFirst();
-
-            while (!cursor.isAfterLast()) {
-                String module = cursor.getString(0);
-                String taskName = cursor.getString(1);
-                String dueDate = cursor.getString(2);
-                String dueTime = cursor.getString(3);
-                mods.add(new Task(module, taskName, dueDate, dueTime));
-                cursor.moveToNext();
+            
+            while (cursor.moveToNext()) {
+                int categoryId = cursor.getInt(0);
+                String courseCode = cursor.getString(1);
+                String courseName = cursor.getString(2);
+                modules.add(new Module(categoryId, courseCode, courseName));
             }
 
             cursor.close();
@@ -62,19 +52,18 @@ public class ModsModel {
         } catch (Exception ex) {
             Log.e(TAG, "getMods >>" + ex.toString());
         } finally {
-
-            return mods;
+            return modules;
         }
 
     }
-    public void update(int position){
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        ContentValues cv = new ContentValues();
-        mods.remove(position);
-        cv.put("IsCompleted", 1);
-        db.update("TaskCompletion", cv, "TaskID = ?",null);
-//
 
+
+    public void update(int position){
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        ContentValues cv = new ContentValues();
+//        mods.remove(position);
+//        cv.put("IsCompleted", 1);
+//        db.update("TaskCompletion", cv, "TaskID = ?",null);
     }
 
 

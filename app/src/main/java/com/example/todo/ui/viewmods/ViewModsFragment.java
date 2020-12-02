@@ -28,6 +28,7 @@ import java.util.List;
 
 public class ViewModsFragment extends Fragment {
 
+    // TODO: This one too
     private ViewModsViewModel viewModsViewModel;
 //    private ListView listView;
 
@@ -47,16 +48,16 @@ public class ViewModsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
-        try {
-            viewModsViewModel.getMods().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Task> tasks) {
-                        adapter.setTasks(tasks);
-                    }});
-
-            }catch(IOException e) {
-                e.printStackTrace();
-            }
+//        try {
+//            viewModsViewModel.getMods().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
+//                    @Override
+//                    public void onChanged(@Nullable List<Task> tasks) {
+//                        adapter.setTasks(tasks);
+//                    }});
+//
+//            }catch(IOException e) {
+//                e.printStackTrace();
+//            }
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT| ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {

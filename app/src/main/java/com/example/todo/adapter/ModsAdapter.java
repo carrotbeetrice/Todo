@@ -18,7 +18,7 @@ import com.example.todo.models.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModsAdapter extends RecyclerView.Adapter<ModsAdapter.ModsHolder>{
+public class ModsAdapter extends RecyclerView.Adapter<ModsAdapter.ModsHolder> {
     private List<Task> tasks = new ArrayList<>();
 
     @NonNull
