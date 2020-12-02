@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.todo.models.AddTaskModel;
 import com.example.todo.models.Courses;
-import com.example.todo.models.Reminders;
 import com.example.todo.models.Task;
 
 import java.util.List;

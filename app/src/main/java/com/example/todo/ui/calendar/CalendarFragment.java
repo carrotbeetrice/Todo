@@ -95,15 +95,13 @@ public class CalendarFragment extends Fragment {
 
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
+                return true;
             }
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 Task completedTask = calendarAdapter.removeTask(position);
-
-//                Toast.makeText(getContext(), completedTask.taskName + " completed", Toast.LENGTH_SHORT);
 
                 calendarViewModel.setTaskCompleted(completedTask.taskId);
 

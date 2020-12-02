@@ -109,45 +109,4 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
         return completedTask;
     }
 
-
-
-//    public CalendarAdapter(Activity context, List<Task> dailyGoals) {
-//        super(context, R.layout.home_row_item, dailyGoals);
-//        this.context = context;
-//        this.dailyGoals = dailyGoals;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        View rowView = convertView;
-//
-//        // Reuse views
-//        if (rowView == null) {
-//            LayoutInflater inflater = context.getLayoutInflater();
-//            rowView = inflater.inflate(R.layout.calendar_row_items, null);
-//
-//            // Configure view holder
-//            CalendarAdapter.CalendarAdapterViewHolder viewHolder = new CalendarAdapter.CalendarAdapterViewHolder();
-//            viewHolder.textCalendarTaskName = (TextView) rowView.findViewById(R.id.calendar_task_name);
-//            viewHolder.textCalendarTaskImportance = (TextView) rowView.findViewById(R.id.calendar_task_importance);
-//            viewHolder.textCalendarModuleName = (TextView) rowView.findViewById(R.id.calendar_module_name);
-//            viewHolder.textCalendarDueTime = (TextView) rowView.findViewById(R.id.calendar_due_time);
-//
-//            rowView.setTag(viewHolder);
-//        }
-//
-//        // Fill data
-//        CalendarAdapter.CalendarAdapterViewHolder holder = (CalendarAdapter.CalendarAdapterViewHolder) rowView.getTag();
-//        Task goal = dailyGoals.get(position);
-//
-//        holder.textCalendarTaskName.setText(goal.taskName);
-//        holder.textCalendarTaskImportance.setText(generateImportance(goal.importance));
-//        holder.textCalendarModuleName.setText(goal.module);
-//        holder.textCalendarDueTime.setText(goal.dueTime);
-//
-//        return rowView;
-//
-//    }
-
 }

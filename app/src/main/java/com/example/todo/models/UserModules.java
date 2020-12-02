@@ -14,13 +14,13 @@ import java.util.Date;
 import java.util.List;
 
 
-public class ModsModel {
+public class UserModules {
     protected static final String TAG = "Mods";
     private DatabaseHelper dbHelper;
     private final Context context;
     private List<Module> modules;
 
-    public ModsModel(Context context){
+    public UserModules(Context context){
         this.context = context;
         modules = new ArrayList<>();
         dbHelper = new DatabaseHelper(context);
