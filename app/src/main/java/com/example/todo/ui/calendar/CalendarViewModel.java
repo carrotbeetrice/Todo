@@ -21,27 +21,24 @@ import java.util.List;
 
 public class CalendarViewModel extends ViewModel {
 
-    //private MutableLiveData<String> mText;
     protected Calendar calendarModel;
-    private MutableLiveData<List<Task>> dairyGoals;
+    private MutableLiveData<List<Task>> dailyGoals;
 
     public CalendarViewModel() {
-        //mText = new MutableLiveData<>();
-        //mText.setValue("This is calendar fragment");
-
     }
 
     public void setContext(Context context){
         calendarModel= new Calendar(context);
     }
 
-    public LiveData<List<Task>> getDairyGoals(String dateSelected) throws IOException {
-        dairyGoals = new MutableLiveData<>();
-        dairyGoals.setValue(calendarModel.getGoals(dateSelected));
-        return dairyGoals;
+    public LiveData<List<Task>> getDailyGoals(String dateSelected) {
+        dailyGoals = new MutableLiveData<>();
+        dailyGoals.setValue(calendarModel.getGoals(dateSelected));
+        return dailyGoals;
     }
 
-    /*public LiveData<String> getText() {
-        return mText;
-    }*/
+    public void setTaskCompleted(int taskId) {
+        calendarModel.markTaskCompleted(taskId);
+    }
+
 }

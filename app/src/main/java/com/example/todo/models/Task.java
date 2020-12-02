@@ -4,7 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 
 public class Task {
-    public String courseCode;
+    public int taskId;
     public String module;
     public String taskName;
     public String description;
@@ -22,6 +22,16 @@ public class Task {
         this.taskName = taskName;
         this.description = description;
         this.dueDate = dueDate;
+        this.dueTime = dueTime;
+        this.importance = importance;
+    }
+
+    // Constructor for CalendarViewModel
+    public Task(int taskId, String module, String taskName, String taskDescription, String dueTime, int importance) {
+        this.taskId = taskId;
+        this.module = module;
+        this.taskName = taskName;
+        this.description = taskDescription;
         this.dueTime = dueTime;
         this.importance = importance;
     }
