@@ -26,7 +26,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todo.R;
 import com.example.todo.adapter.CalendarAdapter;
-import com.example.todo.adapter.DailyGoalsAdapter;
 import com.example.todo.models.Task;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;

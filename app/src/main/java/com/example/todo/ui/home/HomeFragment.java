@@ -14,20 +14,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todo.R;
-import com.example.todo.adapter.DailyGoalsAdapter;
-import com.example.todo.models.Task;
-
-import java.io.IOException;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private ListView listView;
+    private ProgressBar weeklyProgressBar;
+    private TextView textProgressPercentage;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,32 +29,32 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        setWidgetReferences(root);
 
         homeViewModel.setContext(getActivity());
-
-        final ProgressBar progressBar = root.findViewById(R.id.weekly_progress_bar);
-        listView = root.findViewById(R.id.daily_tasks_list);
-
-        try {
-            homeViewModel.getGoals().observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
-                @Override
-                public void onChanged(List<Task> tasks) {
-                    DailyGoalsAdapter adapter = new DailyGoalsAdapter(getActivity(), tasks);
-                    listView.setAdapter(adapter);
-                }
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         homeViewModel.getWeeklyProgress().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                progressBar.setProgress(integer);
+                weeklyProgressBar.setProgress(integer);
+                textProgressPercentage.setText(integer + "%");
             }
         });
 
+//        final ProgressBar progressBar = root.findViewById(R.id.weekly_progress_bar);
+//
+//        homeViewModel.getWeeklyProgress().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+//            @Override
+//            public void onChanged(Integer integer) {
+//                progressBar.setProgress(integer);
+//            }
+//        });
+
         return root;
+    }
+
+    private void setWidgetReferences(View view) {
+        weeklyProgressBar = view.findViewById(R.id.weekly_progress_bar);
+        textProgressPercentage = view.findViewById(R.id.progress_percentage);
     }
 }
