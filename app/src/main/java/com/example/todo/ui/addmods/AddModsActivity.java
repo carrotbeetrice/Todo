@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.R;
+import com.example.todo.ui.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddModsActivity.this,MainActivity.class);
+                Intent intent = new Intent(AddModsActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
