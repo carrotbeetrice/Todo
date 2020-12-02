@@ -2,46 +2,30 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
-            android:id="@+id/category_id"
-            android:layout_width="wrap_content"
+            android:id="@+id/user_course_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1"
-            android:visibility="gone"
+            android:text="Information Systems and Programming"
+            android:textSize="15dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/user_course_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="50.001"
             android:textSize="15dp"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/user_course_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Information Systems and Programming"
-                android:textSize="15dp"
-                android:textColor="@color/black"/>
-
-            <TextView
-                android:id="@+id/user_course_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="50.001"
-                android:textSize="15dp"/>
-
-        </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 

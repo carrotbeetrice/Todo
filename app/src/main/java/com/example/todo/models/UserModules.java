@@ -14,19 +14,19 @@ import java.util.Date;
 import java.util.List;
 
 
-public class ModsModel {
+public class UserModules {
     protected static final String TAG = "Mods";
     private DatabaseHelper dbHelper;
     private final Context context;
     private List<Module> modules;
 
-    public ModsModel(Context context){
+    public UserModules(Context context){
         this.context = context;
         modules = new ArrayList<>();
         dbHelper = new DatabaseHelper(context);
     }
 
-    // TODO: Just change everything here honestly
+
     public List<Module> getMods() {
         try {
             String query = "Select uc.CategoryId, c.CourseCode, c.CourseName from UserCategories uc " +
@@ -58,17 +58,30 @@ public class ModsModel {
     }
 
 
-    public void update(int position){
-//        SQLiteDatabase db = dbHelper.getReadableDatabase();
-//        ContentValues cv = new ContentValues();
-//        mods.remove(position);
-//        cv.put("IsCompleted", 1);
-//        db.update("TaskCompletion", cv, "TaskID = ?",null);
+    public boolean deleteModule(int categoryId) {
+        try {
+
+            String deleteFromTaskCompletionQuery = "delete from TaskCompletion where TaskId in (" +
+                    "select TaskId from Tasks where CategoryId = " + categoryId + ")";
+            String deleteFromTaskDetailsQuery = "delete from TaskDetails where TaskId in (" +
+                    "select TaskId from Tasks where CategoryId = " +  categoryId + ")";
+            String deleteFromTasksQuery = "delete from Tasks where CategoryId = " + categoryId;
+            String deleteFromModules = "delete from UserCategories where CategoryId =" + categoryId;
+
+            dbHelper.createDataBase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            db.execSQL(deleteFromTaskCompletionQuery);
+            db.execSQL(deleteFromTaskDetailsQuery);
+            db.execSQL(deleteFromTasksQuery);
+            db.execSQL(deleteFromModules);
+            db.close();
+
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
     }
-
-
-
-
 
 }
 

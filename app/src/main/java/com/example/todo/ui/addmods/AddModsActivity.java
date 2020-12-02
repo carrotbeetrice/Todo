@@ -1,9 +1,8 @@
-package com.example.todo.AddMods;
+package com.example.todo.ui.addmods;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,9 +13,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.R;
-import com.example.todo.ui.addtask.AddTaskFragment;
-import com.example.todo.ui.addtask.AddTaskViewModel;
-import com.example.todo.ui.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -46,7 +46,7 @@
         </activity>
 
         <activity
-            android:name=".AddMods.AddModsActivity"
+            android:name=".ui.addmods.AddModsActivity"
             android:theme="@style/AppTheme"
             android:label="Add Mods"
             android:parentActivityName=".ui.main.MainActivity">
