@@ -58,18 +58,6 @@ public class UserModules {
     }
 
 
-    public void update(int position){
-//        SQLiteDatabase db = dbHelper.getReadableDatabase();
-//        ContentValues cv = new ContentValues();
-//        mods.remove(position);
-//        cv.put("IsCompleted", 1);
-//        db.update("TaskCompletion", cv, "TaskID = ?",null);
-    }
-
-
-
-
-
 }
 
 

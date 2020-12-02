@@ -1,7 +1,11 @@
 package com.example.todo.ui.viewmods;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,9 +92,34 @@ public class ViewModsFragment extends Fragment {
 
                 viewModsViewModel.removeModule(deletedModId);
             }
+
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+
+                ColorDrawable deleteBackground = new ColorDrawable(Color.RED);
+
+                View itemView = viewHolder.itemView;
+                int backgroundCornerOffset = 20;
+
+                if (dX < 0) { // left swipe
+                    deleteBackground.setBounds(itemView.getRight() + ((int) dX) - backgroundCornerOffset,
+                            itemView.getTop(), itemView.getRight(), itemView.getBottom());
+                } else { // no swipe
+                    deleteBackground.setBounds(0, 0, 0, 0);
+                }
+
+                deleteBackground.draw(c);
+
+            }
+
         };
 
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(viewModsRecyclerView);
+    }
+
+    private int dbToPx(int dp) {
+        return Math.round(dp * (getResources().getDisplayMetrics().xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
 }
