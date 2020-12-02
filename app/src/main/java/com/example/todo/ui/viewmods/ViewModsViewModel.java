@@ -36,4 +36,8 @@ private MutableLiveData<List<Task>> mMods;
 
     }
 
+    public void updateMods(int position){
+        modsModel.update(position);
+    }
+
 }

@@ -66,7 +66,10 @@ public class ViewModsFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                // TODO: Update the IsCompleted value to 1
+                viewModsViewModel.updateMods(position);
+                adapter.notifyDataSetChanged();
+
+
 
 
             }
