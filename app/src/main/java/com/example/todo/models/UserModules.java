@@ -26,7 +26,7 @@ public class UserModules {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // TODO: Just change everything here honestly
+
     public List<Module> getMods() {
         try {
             String query = "Select uc.CategoryId, c.CourseCode, c.CourseName from UserCategories uc " +
@@ -57,6 +57,31 @@ public class UserModules {
 
     }
 
+
+    public boolean deleteModule(int categoryId) {
+        try {
+
+            String deleteFromTaskCompletionQuery = "delete from TaskCompletion where TaskId in (" +
+                    "select TaskId from Tasks where CategoryId = " + categoryId + ")";
+            String deleteFromTaskDetailsQuery = "delete from TaskDetails where TaskId in (" +
+                    "select TaskId from Tasks where CategoryId = " +  categoryId + ")";
+            String deleteFromTasksQuery = "delete from Tasks where CategoryId = " + categoryId;
+            String deleteFromModules = "delete from UserCategories where CategoryId =" + categoryId;
+
+            dbHelper.createDataBase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            db.execSQL(deleteFromTaskCompletionQuery);
+            db.execSQL(deleteFromTaskDetailsQuery);
+            db.execSQL(deleteFromTasksQuery);
+            db.execSQL(deleteFromModules);
+            db.close();
+
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
+    }
 
 }
 

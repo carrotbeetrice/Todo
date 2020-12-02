@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -90,7 +91,9 @@ public class ViewModsFragment extends Fragment {
                 int position = viewHolder.getAdapterPosition();
                 int deletedModId = viewModsAdapter.removeModule(position);
 
-                viewModsViewModel.removeModule(deletedModId);
+                if (!viewModsViewModel.removeModule(deletedModId)) {
+                    Toast.makeText(getContext(), "Module deleted", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override

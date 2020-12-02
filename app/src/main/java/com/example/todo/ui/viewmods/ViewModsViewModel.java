@@ -30,7 +30,7 @@ public class ViewModsViewModel extends ViewModel {
         return modules;
     }
 
-    public void removeModule(int moduleId) {
-
+    public boolean removeModule(int moduleId) {
+        return userModules.deleteModule(moduleId);
     }
 }
