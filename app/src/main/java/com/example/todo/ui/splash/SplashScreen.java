@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.ui.getstarted.GetStarted;
 import com.example.todo.ui.getstarted.SetUp;
@@ -22,17 +24,10 @@ import java.util.List;
 
 public class SplashScreen extends AppCompatActivity {
 
-    // Display splash screen for 3 seconds
-    private static int SPLASH_TIME_OUT = 3000;
+    private SplashScreenViewModel splashScreenViewModel;
+    private static int SPLASH_TIME_OUT = 3000; // Display splash screen for 3 seconds
+    TextView quoteField, attributionField, welcomeLabel, userName, quoteLabel; // Widgets
 
-    // Widgets
-    TextView quoteField;
-    TextView attributionField;
-    TextView welcome;
-    TextView user;
-    TextView quoteOfTheDay;
-
-    SharedPreferences sharedPreferences;
     Boolean firstTime;
 
     @Override
@@ -40,60 +35,48 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
+        splashScreenViewModel = ViewModelProviders.of(this).get(SplashScreenViewModel.class);
+
         setWidgetReferences();
-        welcome.setText(R.string.welcome);
-        user.setText(R.string.user);
-        quoteOfTheDay.setText(R.string.quote_of_the_day);
 
-        sharedPreferences = getSharedPreferences("myPrefs", MODE_PRIVATE);
-        firstTime = sharedPreferences.getBoolean("firstTime", true);
+        splashScreenViewModel.setContext(this);
 
-        // Get quote stuff
-//        Quote quoteSource = new Quote();
-//        quoteField.setText(quoteSource.getQuote());
-//        attributionField.setText(quoteSource.getAttribution());
-
-        new GetDailyQuote().execute();
-
-        new Handler().postDelayed(new Runnable() {
+        splashScreenViewModel.getmUserName().observe(this, new Observer<String>() {
             @Override
-            public void run() {
-                startActivity(new Intent(SplashScreen.this, GetStarted.class));
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
-
-        if (firstTime){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
+            public void onChanged(String s) {
+                if (s.isEmpty()) {
+                    firstTime = true;
+                    welcomeLabel.setText(R.string.welcome);
+                } else {
                     firstTime = false;
-                    editor.putBoolean("firstTime", firstTime);
-                    editor.apply();
-                    startActivity(new Intent(SplashScreen.this, GetStarted.class));
-                    finish();
+                    userName.setText(s);
+                    welcomeLabel.setText(R.string.welcome_back);
                 }
-            }, SPLASH_TIME_OUT);
-        }
 
-        else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
-                }
-            }, SPLASH_TIME_OUT);
-        }
+                quoteLabel.setText(R.string.quote_of_the_day);
+
+                new GetDailyQuote().execute();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Class destination = firstTime ? GetStarted.class : MainActivity.class;
+                        startActivity(new Intent(SplashScreen.this, destination));
+                        finish();
+                    }
+                }, SPLASH_TIME_OUT);
+
+            }
+        });
+
     }
 
     private void setWidgetReferences() {
         quoteField = findViewById(R.id.quote_field);
         attributionField = findViewById(R.id.attribution_field);
-        welcome = findViewById(R.id.welcome);
-        user = findViewById(R.id.user);
-        quoteOfTheDay = findViewById(R.id.quote_of_the_day);
+        welcomeLabel = findViewById(R.id.welcome);
+        userName = findViewById(R.id.user);
+        quoteLabel = findViewById(R.id.quote_of_the_day);
 
     }
 
