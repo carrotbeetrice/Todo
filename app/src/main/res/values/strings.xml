@@ -16,7 +16,26 @@
     <string name="cue_reminders_label">Cue Reminders</string>
     <string name="clear_button_label">Clear</string>
     <string name="add_task_button_label">Add Task</string>
-    <string name="welcome">Welcome Back,</string>
+
+    <!-- GetStarted -->
+    <string name="welcome_to">Welcome to</string>
+    <string name="todo">Todo</string>
+    <string name="todo_description">Productivity. Time management. Focus.</string>
+    <string name="get_started">Get Started</string>
+
+    <!-- SetUp -->
+    <string name="back">Back</string>
+    <string name="create_account">Create Account</string>
+    <string name="create_account_description">Enter your name and student ID to create a new account.</string>
+    <string name="name">Name</string>
+    <string name="student_id">Student ID</string>
+    <string name="invalid_name_toast">Invalid name</string>
+    <string name="invalid_id_toast">Invalid student ID</string>
+
+    <!-- Splash Screen -->
+    <string name="welcome">Welcome</string>
+    <string name="welcome_back">Welcome Back,</string>
     <string name="user">weAreNumberone</string>
     <string name="quote_of_the_day">Quote Of The Day</string>
+
 </resources>
