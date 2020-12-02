@@ -35,4 +35,12 @@ public class Task {
         this.importance = importance;
     }
 
+    //Constructor for ModsModel
+    public Task(String module , String taskName , String dueDate , String dueTime){
+        this.module = module;
+        this.taskName = taskName;
+        this.dueDate = dueDate;
+        this.dueTime = dueTime;
+    }
+
 }
