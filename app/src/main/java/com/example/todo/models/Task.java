@@ -12,6 +12,7 @@ public class Task {
     public String dueTime;
     public int importance;
     public int cueRemindersId;
+    public String taskID;
 
     public Task() {
     }
@@ -46,7 +47,8 @@ public class Task {
     }
 
     //Constructor for ModsModel
-    public Task(String module , String taskName , String dueDate , String dueTime){
+    public Task(String taskID, String module , String taskName , String dueDate , String dueTime){
+        this.taskID = taskID;
         this.module = module;
         this.taskName = taskName;
         this.dueDate = dueDate;
