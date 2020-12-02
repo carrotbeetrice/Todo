@@ -24,7 +24,8 @@
 
 <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
 
     <Button
         android:id="@+id/Cancel"
@@ -35,10 +36,13 @@
     </Button>
 
     <Button
+        android:id="@+id/Confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/Cancel"
-        android:text="Confirm"></Button>
+        android:text="Confirm">
+
+    </Button>
 </RelativeLayout>
 
     </LinearLayout>

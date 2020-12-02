@@ -1,9 +1,11 @@
 package com.example.todo.ui.addmods;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.R;
+import com.example.todo.ui.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +46,48 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
                 moduleSpinner.setOnItemSelectedListener(AddModsActivity.this);
             }
         });
+
+        Button cancel = findViewById(R.id.Cancel);
+        Button confirm = findViewById(R.id.Confirm);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddModsActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addMods();
+                Intent intent = new Intent(AddModsActivity.this,MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
+
+
+
+
+
     }
+
+    private void addMods(){
+        String textMods = moduleSpinner.getSelectedItem().toString();
+        addModsViewModel.addModules(textMods);
+
+
+
+
+    }
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -57,5 +101,10 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
 
 
 
-    ;
+
+
+
+
+
+
 }
