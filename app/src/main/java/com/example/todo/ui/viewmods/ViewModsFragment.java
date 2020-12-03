@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,18 +24,16 @@ import com.example.todo.adapter.UserModulesAdapter;
 import com.example.todo.models.Module;
 import com.example.todo.ui.addmods.AddModsActivity;
 import com.example.todo.R;
-import com.example.todo.adapter.ModsAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class ViewModsFragment extends Fragment {
 
-    // TODO: This one too
     private ViewModsViewModel viewModsViewModel;
     private RecyclerView viewModsRecyclerView;
     private UserModulesAdapter viewModsAdapter;
-    FloatingActionButton toAddModsActionButton;
+    Button toAddModsActionButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {

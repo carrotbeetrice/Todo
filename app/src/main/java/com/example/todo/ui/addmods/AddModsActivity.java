@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.R;
 import com.example.todo.ui.main.MainActivity;
+import com.example.todo.ui.viewmods.ViewModsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +56,9 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddModsActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -64,16 +68,9 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
                 addMods();
                 Intent intent = new Intent(AddModsActivity.this,MainActivity.class);
                 startActivity(intent);
-
+                finish();
             }
         });
-
-
-
-
-
-
-
 
 
     }
@@ -81,10 +78,7 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
     private void addMods(){
         String textMods = moduleSpinner.getSelectedItem().toString();
         addModsViewModel.addModules(textMods);
-
-
-
-
+        Toast.makeText(AddModsActivity.this, textMods + " added to modules!", Toast.LENGTH_LONG).show();
     }
 
 
