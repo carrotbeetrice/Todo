@@ -147,15 +147,17 @@
             android:id="@+id/importance_block"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="10dp">
+
             <TextView
                 android:id="@+id/importance_label"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:gravity="left"
                 android:text="@string/importance_label"
                 android:textSize="20sp"
-                android:gravity="left" />
+                android:layout_marginTop="10dp"/>
             <RatingBar
                 android:id="@+id/importance_input"
                 android:layout_width="wrap_content"
