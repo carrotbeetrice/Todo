@@ -38,4 +38,7 @@
     <string name="user">weAreNumberone</string>
     <string name="quote_of_the_day">Quote Of The Day</string>
 
+    <!-- Home -->
+    <string name="progress_description_label_before">You have completed</string>
+    <string name="progress_description_label_after">of your tasks for this week.</string>
 </resources>

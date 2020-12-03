@@ -9,40 +9,55 @@
     android:orientation="vertical"
     android:layout_marginBottom="0dp">
 
-    <LinearLayout
-        android:id="@+id/weekly_progress_block"
+    <TextView
+        android:id="@+id/text_home"
+        android:text="@string/label_progress_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/text_home"
-            android:text="@string/label_progress_bar"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center_horizontal" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"/>
 
-        <ProgressBar
-            android:id="@+id/weekly_progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_gravity="center_horizontal"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:max="100"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/daily_tasks_list"
+    <ProgressBar
+        android:id="@+id/weekly_progress_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true">
-    </ListView>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="100dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:max="100"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/progress_description_before"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:text="@string/progress_description_label_before"/>
+
+    <TextView
+        android:id="@+id/progress_percentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30dp"
+        android:text="50%"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/progress_description_after"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:text="@string/progress_description_label_after"/>
 
 </LinearLayout>

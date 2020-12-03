@@ -40,7 +40,26 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.addmods.AddModsActivity"
+            android:theme="@style/AppTheme"
+            android:label="Add Mods"
+            android:parentActivityName=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+
+
+
+
+
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 
