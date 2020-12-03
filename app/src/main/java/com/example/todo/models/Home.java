@@ -50,6 +50,10 @@ public class Home {
 
             weeklyTasksCursor.close();
 
+            if (totalWeeklyTasks == 0) {
+                return 0;
+            }
+
             String getCompletedTasksTotalQuery = "select count(*) from TaskDetails td " +
                     "inner join TaskCompletion tc on td.TaskId = tc.TaskId " +
                     "where DueDate >= '" + weekStartDate + "' and DueDate <= '" + weekEndDate +  "' and IsCompleted = 1;";
@@ -64,6 +68,7 @@ public class Home {
             return weeklyProgressPercentage;
 
         } catch (IOException ex) {
+            Log.e(TAG, "getWeeklyProgress >>" + ex.toString());
             return 0;
         }
     }

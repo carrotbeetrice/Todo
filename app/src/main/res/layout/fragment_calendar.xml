@@ -6,37 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.calendar.CalendarFragment"
+    android:background="@color/background"
     android:layout_marginBottom="0dp">
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/calendarView"
+        android:background="@color/white"
         android:layout_centerInParent = 'true'
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:mcv_showOtherDates="all"
         app:mcv_selectionColor="#00F"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="1dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tasks Due:"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Tasks Due"
+        android:textAlignment="center"
         android:padding="5dp"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="1dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendar_task_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:textAlignment="center"
-        android:background="#ECEFF1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/background"
         android:gravity="center_horizontal" />
 </LinearLayout>

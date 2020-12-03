@@ -57,7 +57,6 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
             public void onClick(View v) {
                 Intent intent = new Intent(AddModsActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
                 finish();
             }
         });
