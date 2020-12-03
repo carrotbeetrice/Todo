@@ -4,7 +4,9 @@
     android:id="@+id/module_name"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,7 +15,6 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:paddingBottom="10dp">
-
     </TextView>
 
     <Spinner
@@ -22,28 +23,30 @@
         android:layout_height="50dp"
         android:hint="Start typing to select module" />
 
-<RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center">
-
-    <Button
-        android:id="@+id/Cancel"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel">
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-    </Button>
+        <Button
+            android:id="@+id/Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel">
+        </Button>
 
-    <Button
-        android:id="@+id/Confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/Cancel"
-        android:text="Confirm">
+        <Button
+            android:id="@+id/Confirm"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm">
+        </Button>
 
-    </Button>
-</RelativeLayout>
+    </LinearLayout>
 
     </LinearLayout>
 
