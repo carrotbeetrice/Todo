@@ -1,18 +1,22 @@
 package com.example.todo.ui.splash;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.todo.ui.getstarted.GetStarted;
+import com.example.todo.ui.getstarted.SetUp;
 import com.example.todo.ui.main.MainActivity;
 import com.example.todo.R;
 import java.util.ArrayList;
@@ -20,46 +24,51 @@ import java.util.List;
 
 public class SplashScreen extends AppCompatActivity {
 
+    private SplashScreenViewModel splashScreenViewModel;
     private static int SPLASH_TIME_OUT = 3000; // Display splash screen for 3 seconds
-    TextView quoteField, attributionField, welcomeLabel, userName, quoteOfTheDay; // Widgets
-    SplashScreenViewModel splashScreenViewModel;
-    boolean isFirstTime;
+    TextView quoteField, attributionField, welcomeLabel, userName, quoteLabel; // Widgets
+
+    Boolean firstTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
+        splashScreenViewModel = ViewModelProviders.of(this).get(SplashScreenViewModel.class);
+
         setWidgetReferences();
 
-        // Access the viewmodel
-        splashScreenViewModel = ViewModelProviders.of(this).get(SplashScreenViewModel.class);
         splashScreenViewModel.setContext(this);
 
-        splashScreenViewModel.getUserName().observe(this, new Observer<String>() {
+        splashScreenViewModel.getmUserName().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 if (s.isEmpty()) {
-                    isFirstTime = true;
+                    firstTime = true;
                     welcomeLabel.setText(R.string.welcome);
                 } else {
+                    firstTime = false;
                     userName.setText(s);
                     welcomeLabel.setText(R.string.welcome_back);
                 }
+
+                quoteLabel.setText(R.string.quote_of_the_day);
+
+                new GetDailyQuote().execute();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Class destination = firstTime ? GetStarted.class : MainActivity.class;
+                        startActivity(new Intent(SplashScreen.this, destination));
+                        finish();
+                    }
+                }, SPLASH_TIME_OUT);
+
             }
         });
 
-        quoteOfTheDay.setText(R.string.quote_of_the_day);
-
-        new GetDailyQuote().execute();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(SplashScreen.this, MainActivity.class));
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
     }
 
     private void setWidgetReferences() {
@@ -67,7 +76,7 @@ public class SplashScreen extends AppCompatActivity {
         attributionField = findViewById(R.id.attribution_field);
         welcomeLabel = findViewById(R.id.welcome);
         userName = findViewById(R.id.user);
-        quoteOfTheDay = findViewById(R.id.quote_of_the_day);
+        quoteLabel = findViewById(R.id.quote_of_the_day);
 
     }
 
@@ -87,6 +96,4 @@ public class SplashScreen extends AppCompatActivity {
             }
         }
     }
-
-
 }

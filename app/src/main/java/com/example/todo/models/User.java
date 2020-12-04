@@ -1,5 +1,6 @@
 package com.example.todo.models;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,7 +24,7 @@ public class User {
         String userName = "";
 
         try {
-            String query = "Select UserName from User;";
+            String query = "select UserName from User;";
 
             dbHelper.createDataBase();
             SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -38,12 +39,30 @@ public class User {
             db.close();
 
         } catch (IOException ex) {
+            Log.e(TAG, "getUserName >>" + ex.toString());        } catch (Exception ex) {
             Log.e(TAG, "getUserName >>" + ex.toString());
         } finally {
-
             return userName;
         }
+    }
 
+    public boolean addUser(String userName, String studentId) {
+        try {
+            dbHelper.createDataBase();
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            ContentValues cv = new ContentValues();
+
+            cv.put("StudentId", studentId);
+            cv.put("UserName", userName);
+
+            db.insert("User", null, cv);
+            db.close();
+
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
     }
 
 }

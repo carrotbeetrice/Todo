@@ -4,27 +4,41 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
+import com.example.todo.models.Calendar;
+import com.example.todo.models.Task;
 
 import com.example.todo.R;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
-public class CalendarViewModel extends ViewModel {
-    //MaterialCalendarView materialCalendarView = (MaterialCalendarView) findViewById(R.id.calendarView);
+import java.io.IOException;
+import java.util.List;
 
-    private MutableLiveData<String> mText;
-    CalendarView simpleCalendarView;
+public class CalendarViewModel extends ViewModel {
+
+    protected Calendar calendarModel;
+    private MutableLiveData<List<Task>> dailyGoals;
 
     public CalendarViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is calendar fragment");
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void setContext(Context context){
+        calendarModel= new Calendar(context);
     }
+
+    public LiveData<List<Task>> getDailyGoals(String dateSelected) {
+        dailyGoals = new MutableLiveData<>();
+        dailyGoals.setValue(calendarModel.getGoals(dateSelected));
+        return dailyGoals;
+    }
+
+    public void setTaskCompleted(int taskId) {
+        calendarModel.markTaskCompleted(taskId);
+    }
+
 }

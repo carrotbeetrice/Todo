@@ -16,15 +16,11 @@ import java.util.List;
 public class HomeViewModel extends ViewModel {
 
     //    private MutableLiveData<String> mText;
-    private MutableLiveData<List<Task>> mGoals;
+    // private MutableLiveData<List<Task>> mGoals;
     protected Home homeModel;
     private MutableLiveData<Integer> weeklyProgress;
 
     public HomeViewModel() {
-        // TODO: Implement class to programmatically determine weekly progress
-        weeklyProgress = new MutableLiveData<>();
-        weeklyProgress.setValue(75);
-
     }
 
     public void setContext(Context context) {
@@ -32,12 +28,14 @@ public class HomeViewModel extends ViewModel {
     }
 
     public LiveData<Integer> getWeeklyProgress() {
+        weeklyProgress = new MutableLiveData<>();
+        weeklyProgress.setValue(homeModel.getWeeklyProgress());
         return weeklyProgress;
     }
 
-    public LiveData<List<Task>> getGoals() throws IOException {
-        mGoals = new MutableLiveData<>();
-        mGoals.setValue(homeModel.getGoals());
-        return mGoals;
-    }
+//    public LiveData<List<Task>> getGoals() {
+//        mGoals = new MutableLiveData<>();
+//        mGoals.setValue(homeModel.getGoals());
+//        return mGoals;
+//    }
 }

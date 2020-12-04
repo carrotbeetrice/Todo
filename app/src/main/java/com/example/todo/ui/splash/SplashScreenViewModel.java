@@ -8,22 +8,17 @@ import androidx.lifecycle.ViewModel;
 import com.example.todo.models.User;
 
 public class SplashScreenViewModel extends ViewModel {
-    private User user;
-    private MutableLiveData<String> userName;
 
-    public SplashScreenViewModel() {
-    }
+    protected User userModel;
+    private MutableLiveData<String> mUserName;
 
     public void setContext(Context context) {
-        user = new User(context);
+        userModel = new User(context);
     }
 
-    public MutableLiveData<String> getUserName() {
-        userName = new MutableLiveData<>();
-
-        String name = user.getUserName();
-
-        userName.setValue(name);
-        return userName;
+    public MutableLiveData<String> getmUserName() {
+        mUserName = new MutableLiveData<>();
+        mUserName.setValue(userModel.getUserName());
+        return mUserName;
     }
 }

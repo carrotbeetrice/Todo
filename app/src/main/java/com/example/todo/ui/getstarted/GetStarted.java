@@ -21,7 +21,7 @@ public class GetStarted extends AppCompatActivity {
         setContentView(R.layout.activity_getstarted);
         getSupportActionBar().hide();
 
-        getStartedButton = (Button) findViewById(R.id.getstarted_button);
+        getStartedButton = findViewById(R.id.getstarted_button);
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
