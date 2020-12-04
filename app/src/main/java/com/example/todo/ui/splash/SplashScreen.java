@@ -2,6 +2,7 @@ package com.example.todo.ui.splash;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -25,7 +26,7 @@ import java.util.List;
 public class SplashScreen extends AppCompatActivity {
 
     private SplashScreenViewModel splashScreenViewModel;
-    private static int SPLASH_TIME_OUT = 3000; // Display splash screen for 3 seconds
+    private static int SPLASH_TIME_OUT = 3500; // Display splash screen for 3.5 seconds
     TextView quoteField, attributionField, welcomeLabel, userName, quoteLabel; // Widgets
 
     Boolean firstTime;
@@ -53,7 +54,7 @@ public class SplashScreen extends AppCompatActivity {
                     welcomeLabel.setText(R.string.welcome_back);
                 }
 
-                quoteLabel.setText(R.string.quote_of_the_day);
+                //quoteLabel.setText(R.string.quote_of_the_day);
 
                 new GetDailyQuote().execute();
 
@@ -76,7 +77,7 @@ public class SplashScreen extends AppCompatActivity {
         attributionField = findViewById(R.id.attribution_field);
         welcomeLabel = findViewById(R.id.welcome);
         userName = findViewById(R.id.user);
-        quoteLabel = findViewById(R.id.quote_of_the_day);
+        //quoteLabel = findViewById(R.id.quote_of_the_day);
 
     }
 
