@@ -32,18 +32,6 @@
 
     </TextView>
 
-<!--    <TextView-->
-<!--        android:id="@+id/quote_of_the_day"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:gravity="center"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="20dp"-->
-<!--        android:textStyle="bold">-->
-<!--    </TextView>-->
-
-
     <TextView
         android:id="@+id/quote_field"
         android:layout_width="393dp"

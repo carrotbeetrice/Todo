@@ -54,8 +54,6 @@ public class SplashScreen extends AppCompatActivity {
                     welcomeLabel.setText(R.string.welcome_back);
                 }
 
-                //quoteLabel.setText(R.string.quote_of_the_day);
-
                 new GetDailyQuote().execute();
 
                 new Handler().postDelayed(new Runnable() {
@@ -77,8 +75,6 @@ public class SplashScreen extends AppCompatActivity {
         attributionField = findViewById(R.id.attribution_field);
         welcomeLabel = findViewById(R.id.welcome);
         userName = findViewById(R.id.user);
-        //quoteLabel = findViewById(R.id.quote_of_the_day);
-
     }
 
     class GetDailyQuote extends AsyncTask<Void, Void, Quote> {
