@@ -28,11 +28,12 @@ public class Home {
             dbHelper.createDataBase();
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-            String getStartEndOfWeekQuery = "select StartDate, EndDate from AcademicWeeks where StartDate < date('now') and EndDate > date('now');";
+            String getStartEndOfWeekQuery = "select StartDate, EndDate from AcademicWeeks where StartDate <= date('now') and EndDate >= date('now');";
 
             String weekStartDate, weekEndDate;
 
             Cursor startEndCursor = db.rawQuery(getStartEndOfWeekQuery, null);
+
             startEndCursor.moveToFirst();
 
             weekStartDate = startEndCursor.getString(0);

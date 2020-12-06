@@ -12,9 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.R;
-import com.example.todo.dbhelper.DatabaseHelper;
 import com.example.todo.ui.main.MainActivity;
-import com.example.todo.ui.splash.SplashScreen;
 import com.example.todo.utils.InputValidation;
 
 public class SetUp extends AppCompatActivity {
