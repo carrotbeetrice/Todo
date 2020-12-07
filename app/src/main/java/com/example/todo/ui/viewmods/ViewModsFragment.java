@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -28,12 +29,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+
 public class ViewModsFragment extends Fragment {
 
     private ViewModsViewModel viewModsViewModel;
     private RecyclerView viewModsRecyclerView;
     private UserModulesAdapter viewModsAdapter;
     Button toAddModsActionButton;
+    private static final String swipeDeleteModLabel = "Delete module";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -97,22 +101,15 @@ public class ViewModsFragment extends Fragment {
 
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                        .addBackgroundColor(ContextCompat.getColor(getContext(), R.color.delete_module_background))
+                        .addSwipeLeftLabel(swipeDeleteModLabel)
+                        .setSwipeLeftLabelColor(ContextCompat.getColor(getContext(), R.color.white))
+                        .addSwipeLeftActionIcon(R.drawable.baseline_delete_white_24dp)
+                        .create()
+                        .decorate();
+
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-
-                ColorDrawable deleteBackground = new ColorDrawable(Color.RED);
-
-                View itemView = viewHolder.itemView;
-                int backgroundCornerOffset = 20;
-
-                if (dX < 0) { // left swipe
-                    deleteBackground.setBounds(itemView.getRight() + ((int) dX) - backgroundCornerOffset,
-                            itemView.getTop(), itemView.getRight(), itemView.getBottom());
-                } else { // no swipe
-                    deleteBackground.setBounds(0, 0, 0, 0);
-                }
-
-                deleteBackground.draw(c);
-
             }
 
         };

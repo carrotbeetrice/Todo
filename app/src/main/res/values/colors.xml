@@ -7,4 +7,6 @@
     <color name="black">#000000</color>
     <color name="background">#ECEFF1</color>
     <color name="splash_screen_background">#f5ebf7</color>
+    <color name="delete_module_background">#de2618</color>
+    <color name="task_completed_background">#0ec71d</color>
 </resources>

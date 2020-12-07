@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -36,12 +37,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+
 public class CalendarFragment extends Fragment {
 
     private CalendarViewModel calendarViewModel;
     private RecyclerView calendarRecyclerView;
     private CalendarAdapter calendarAdapter;
     private List<Task> dailyTasks = new ArrayList<>();
+    private static final String swipeTaskCompletedLabel = "Mark as completed";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -112,6 +116,14 @@ public class CalendarFragment extends Fragment {
 
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                         .addBackgroundColor(ContextCompat.getColor(getContext(), R.color.task_completed_background))
+                         .addSwipeLeftLabel(swipeTaskCompletedLabel)
+                         .setSwipeLeftLabelColor(ContextCompat.getColor(getContext(), R.color.white))
+                         .addSwipeLeftActionIcon(R.drawable.baseline_done_white_24dp)
+                         .create()
+                         .decorate();
+
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         };
