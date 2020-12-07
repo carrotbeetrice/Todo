@@ -43,6 +43,7 @@
     <string name="welcome_back">Welcome Back,</string>
     <string name="user">weAreNumberone</string>
     <string name="quote_of_the_day">Quote Of The Day</string>
+    <string name="zenquotes_attribution">Inspirational quotes provided by ZenQuotes API</string>
 
     <!-- Home -->
     <string name="progress_description_label_before">You have completed</string>

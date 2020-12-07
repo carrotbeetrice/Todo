@@ -1,10 +1,12 @@
 package com.example.todo.ui.addtask;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,6 +39,8 @@ import com.example.todo.R;
 import com.example.todo.adapter.ModulesAdapter;
 import com.example.todo.models.Courses;
 import com.example.todo.models.Task;
+import com.example.todo.ui.home.HomeFragment;
+import com.example.todo.ui.main.MainActivity;
 import com.example.todo.utils.InputValidation;
 
 import java.time.LocalDate;
@@ -48,7 +52,6 @@ import java.util.List;
 public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private AddTaskViewModel addTaskViewModel;
-    private List<String> moduleList = new ArrayList<>();
     private EditText editTaskName, editTaskDescription, editDueDate, editDueTime;
     private Spinner moduleSpinner;
     private Button btnDatePicker, btnTimePicker, btnClear, btnAddTask;
@@ -80,7 +83,6 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
         addTaskViewModel.getCourses().observe(getViewLifecycleOwner(), new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> strings) {
-                moduleList = strings;
                 // Create adapter for module spinner
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_spinner_item, strings);
@@ -231,7 +233,7 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
                 } else if (!InputValidation.isValidDueTime(dueTimeInput)) {
                     dismissWithToast(dialog, "Invalid time");
                 } else {
-                    // Send to viewmodel
+                    // Send to view model
                     addTaskViewModel.setTask(taskNameInput, taskDescriptionInput, moduleSelected,
                             dueDateInput, dueTimeInput, (int) importanceInput);
 
@@ -239,6 +241,7 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
                     if (addTaskViewModel.taskAdded()) {
                         message = "Task added!";
                         taskAddedSuccessfully = true;
+                        clearAllEntries();
                     }
                     else {
                         message = "Something went wrong!";
@@ -274,7 +277,6 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
         // Reset contents of Widgets
         String taskNameSaved = preferences.getString(TASK_NAME_KEY, "");
         String taskDescSaved = preferences.getString(TASK_DESC_KEY, "");
-//        String moduleSaved = preferences.getString(MODULE_KEY, "");
         String dueDateSaved = preferences.getString(DUE_DATE_KEY, "");
         String dueTimeSaved = preferences.getString(DUE_TIME_KEY, "");
         float importanceSaved = preferences.getFloat(IMPORTANCE_KEY, 0);
@@ -283,13 +285,6 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
         editTaskDescription.setText(taskDescSaved);
         editDueDate.setText(dueDateSaved);
         editDueTime.setText(dueTimeSaved);
-
-        // Set previously selected module as selected in spinner
-//        if (moduleSaved != "") {
-//            ArrayAdapter<String> spinnerAdapter = (ArrayAdapter) moduleSpinner.getAdapter();
-//            int position = spinnerAdapter.getPosition(moduleSaved);
-//            moduleSpinner.setSelection(position);
-//        }
 
         if (importanceSaved > 0) {
             importanceRating.setRating(importanceSaved);
@@ -315,13 +310,14 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        // Set selected module
-//        addTaskViewModel.task.module = moduleList.get(position);
     }
+
+
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
+
+
     @Override
     public void onPause() {
         super.onPause();
@@ -332,7 +328,6 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString(TASK_NAME_KEY, String.valueOf(editTaskName.getText()));
             editor.putString(TASK_DESC_KEY, String.valueOf(editTaskDescription.getText()));
-//        editor.putString(MODULE_KEY, moduleSpinner.getSelectedItem().toString());
             editor.putString(DUE_DATE_KEY, String.valueOf(editDueDate.getText()));
             editor.putString(DUE_TIME_KEY, String.valueOf(editDueTime.getText()));
             editor.putFloat(IMPORTANCE_KEY, importanceRating.getRating());

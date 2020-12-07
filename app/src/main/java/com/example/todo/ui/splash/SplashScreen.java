@@ -17,7 +17,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.todo.ui.getstarted.GetStarted;
-import com.example.todo.ui.getstarted.SetUp;
 import com.example.todo.ui.main.MainActivity;
 import com.example.todo.R;
 import java.util.ArrayList;

@@ -52,7 +52,7 @@ public class CalendarFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         final MaterialCalendarView materialCalendarView = root.findViewById(R.id.calendarView);
-        materialCalendarView.setDateSelected(new Date(), true);
+
         calendarRecyclerView = root.findViewById(R.id.calendar_task_list);
         addTouchHelper();
 
@@ -84,6 +84,8 @@ public class CalendarFragment extends Fragment {
 
             }
         });
+
+        materialCalendarView.setDateSelected(new Date(), true);
 
         return root;
     }

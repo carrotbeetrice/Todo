@@ -6,4 +6,5 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="background">#ECEFF1</color>
+    <color name="splash_screen_background">#f5ebf7</color>
 </resources>
