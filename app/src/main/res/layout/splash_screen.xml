@@ -23,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/welcome_back"/>
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/user"
@@ -33,7 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/user"
             android:gravity="center" />
 
     </LinearLayout>
