@@ -33,7 +33,7 @@ public class Quote {
             quote = json.getString(quoteKey);
             attribution = json.getString(attributionKey);
 
-        } catch (Exception ex) { // Too many exceptions thrown here FML
+        } catch (Exception ex) { // Too many exceptions thrown here
             ex.printStackTrace();
             Log.i(LOGCAT_TAG, ">>> " + ex.getMessage());
             setDefaultQuote();
@@ -48,7 +48,7 @@ public class Quote {
         return attribution;
     }
 
-    // In case the whole thing fails GDI
+    // In case the API query fails
     private void setDefaultQuote() {
         quote = "Java is to JavaScript what car is to carpet";
         attribution = "Chris Heilmann";

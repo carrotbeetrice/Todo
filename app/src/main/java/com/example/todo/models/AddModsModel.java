@@ -17,7 +17,6 @@ public class AddModsModel {
     private DatabaseHelper dbHelper;
     private final Context context;
     private List<String> mods;
-    private List<Module> modules;
 
     public AddModsModel(Context context) {
         mods = new ArrayList<>();
@@ -31,9 +30,7 @@ public class AddModsModel {
             dbHelper.createDataBase();
             SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-            // Hopefully this works
             queryMods(db);
-            // queryReminders(db);
 
             db.close();
         } catch (IOException ex) {
@@ -63,9 +60,6 @@ public class AddModsModel {
     }
 
 
-    public List<Module> getModules(){return modules;}
-
-
     public void insertModules(String moduleName){
         try {
             dbHelper.createDataBase();
@@ -80,11 +74,7 @@ public class AddModsModel {
             e.printStackTrace();
         }
 
-
-
-
         }
-
 
     }
 

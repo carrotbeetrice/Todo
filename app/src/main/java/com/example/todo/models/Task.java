@@ -11,7 +11,6 @@ public class Task {
     public String dueDate;
     public String dueTime;
     public int importance;
-    public int cueRemindersId;
     public String taskID;
 
     public Task() {

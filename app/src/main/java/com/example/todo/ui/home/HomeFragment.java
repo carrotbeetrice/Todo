@@ -41,15 +41,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        final ProgressBar progressBar = root.findViewById(R.id.weekly_progress_bar);
-//
-//        homeViewModel.getWeeklyProgress().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer integer) {
-//                progressBar.setProgress(integer);
-//            }
-//        });
-
         return root;
     }
 

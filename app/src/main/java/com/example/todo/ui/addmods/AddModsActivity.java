@@ -23,7 +23,6 @@ import java.util.List;
 public class AddModsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private AddModsViewModel addModsViewModel;
     private Spinner moduleSpinner;
-    private List<String> moduleList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class AddModsActivity extends AppCompatActivity implements AdapterView.On
 
             @Override
             public void onChanged(List<String> strings) {
-                moduleList = strings;
                 moduleSpinner = findViewById(R.id.spinner);
 
                 // Create adapter for module spinner

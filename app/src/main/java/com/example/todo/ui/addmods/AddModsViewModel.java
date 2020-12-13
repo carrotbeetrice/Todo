@@ -18,8 +18,6 @@ import java.util.List;
 public class AddModsViewModel extends ViewModel {
     private MutableLiveData<List<String>> mMods;
     private AddModsModel addModsModel;
-    protected Module module;
-
 
     public void setAddModsModel(Context context) {
         addModsModel = new AddModsModel(context);
@@ -30,12 +28,6 @@ public class AddModsViewModel extends ViewModel {
         mMods = new MutableLiveData<>();
         mMods.setValue(addModsModel.getMods());
         return mMods;
-    }
-
-    public void setModules( String courseID, String courseCode, String courseName) {
-        module = new Module( courseID, courseCode, courseName);
-
-
     }
 
     public void addModules(String moduleName){

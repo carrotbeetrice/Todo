@@ -41,8 +41,7 @@ public class ModulesAdapter extends ArrayAdapter<Courses> {
 
             // Configure view holder
             ModulesViewHolder modulesViewHolder = new ModulesViewHolder();
-            // modulesViewHolder.textCourseCode = (TextView) rowView.findViewById(R.id.course_code);
-            modulesViewHolder.textCourseName = (TextView) rowView.findViewById(R.id.course_name);
+            modulesViewHolder.textCourseName = rowView.findViewById(R.id.course_name);
 
             rowView.setTag(modulesViewHolder);
         }

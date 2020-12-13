@@ -15,11 +15,8 @@ import java.util.List;
 public class Home {
     protected static final String TAG = "Home";
     private DatabaseHelper dbHelper;
-    private final Context context;
 
     public Home(Context context) {
-        // goals = new ArrayList<>();
-        this.context = context;
         dbHelper = new DatabaseHelper(context);
     }
 

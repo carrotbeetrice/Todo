@@ -17,15 +17,14 @@ import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static String TAG = "DataBaseHelper"; // Tag just for the LogCat window
-    //destination path (location) of our database on device
-    private static String DB_PATH = "";
+    private static String DB_PATH = ""; // Destination path of database on device
     private static String DB_NAME ="todo.db";// Database name
     private SQLiteDatabase mDataBase;
     private final Context mContext;
 
     public DatabaseHelper(Context context)
     {
-        super(context, DB_NAME, null, 1);// 1? Its database Version
+        super(context, DB_NAME, null, 1);// Database Version
         DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
         this.mContext = context;
     }
@@ -56,7 +55,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private boolean checkDataBase()
     {
         File dbFile = new File(DB_PATH + DB_NAME);
-        //Log.v("dbFile", dbFile + "   "+ dbFile.exists());
         return dbFile.exists();
     }
 
@@ -77,16 +75,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mInput.close();
     }
 
-    //Open the database, so we can query it
-    public boolean openDataBase() throws SQLException
-    {
-        String mPath = DB_PATH + DB_NAME;
-        //Log.v("mPath", mPath);
-        mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-        //mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-        return mDataBase != null;
-    }
-
     @Override
     public synchronized void close()
     {
@@ -97,51 +85,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        db.execSQL("create Table users(name TEXT primary key, studentID TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        db.execSQL("drop Table if exists users");
     }
 
-//    public Boolean insertData(String name, String studentID) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//
-//        contentValues.put("name", name);
-//        contentValues.put("studentID", studentID);
-//        long result = db.insert("users", null, contentValues);
-//
-//        if (result == -1) {
-//            return false;
-//        }
-//        else {
-//            return true;
-//        }
-//    }
-//
-//    public Boolean checkName(String name) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor cursor = db.rawQuery("Select * from users where name = ?", new String[] {name});
-//        if (cursor.getCount() >0) {
-//            return true;
-//        }
-//
-//        else {
-//            return false;
-//        }
-//    }
-//
-//    public Boolean checkNameStudentID(String name, String studentID) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor cursor = db.rawQuery("Select * from users where name = ? and studentID = ?", new String[] {name, studentID});
-//        if (cursor.getCount() >0) {
-//            return true;
-//        }
-//
-//        else {
-//            return false;
-//        }
-//    }
 }

@@ -15,8 +15,6 @@ import java.util.List;
 
 public class HomeViewModel extends ViewModel {
 
-    //    private MutableLiveData<String> mText;
-    // private MutableLiveData<List<Task>> mGoals;
     protected Home homeModel;
     private MutableLiveData<Integer> weeklyProgress;
 
@@ -33,9 +31,4 @@ public class HomeViewModel extends ViewModel {
         return weeklyProgress;
     }
 
-//    public LiveData<List<Task>> getGoals() {
-//        mGoals = new MutableLiveData<>();
-//        mGoals.setValue(homeModel.getGoals());
-//        return mGoals;
-//    }
 }

@@ -117,9 +117,5 @@ public class ViewModsFragment extends Fragment {
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(viewModsRecyclerView);
     }
 
-    private int dbToPx(int dp) {
-        return Math.round(dp * (getResources().getDisplayMetrics().xdpi / DisplayMetrics.DENSITY_DEFAULT));
-    }
-
 }
 

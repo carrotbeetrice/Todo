@@ -12,7 +12,6 @@ import java.util.List;
 
 public class ViewModsViewModel extends ViewModel {
 
-    //  TODO: Change this whole thing too
     protected UserModules userModules;
     private MutableLiveData<List<Module>> modules;
 

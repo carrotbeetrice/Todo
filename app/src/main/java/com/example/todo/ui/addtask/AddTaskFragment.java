@@ -64,7 +64,6 @@ public class AddTaskFragment extends Fragment implements AdapterView.OnItemSelec
     private String sharedPrefFile = "com.example.todo.addtasksharedprefs";
     private final static String TASK_NAME_KEY = "TASK_NAME_KEY";
     private final static String TASK_DESC_KEY = "TASK_DESC_KEY";
-    //    private final static String MODULE_KEY = "MODULE_KEY";
     private final static String DUE_DATE_KEY = "DUE_DATE_KEY";
     private final static String DUE_TIME_KEY = "DUE_TIME_KEY";
     private final static String IMPORTANCE_KEY = "IMPORTANCE_KEY";

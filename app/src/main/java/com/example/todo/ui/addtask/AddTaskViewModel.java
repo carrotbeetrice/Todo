@@ -16,7 +16,6 @@ public class AddTaskViewModel extends ViewModel {
 
     protected AddTaskModel addTaskModel;
     private MutableLiveData<List<String>> mCourses;
-    // private MutableLiveData<List<Reminders>> mReminders;
     protected Task task;
 
     public AddTaskViewModel() {
@@ -41,11 +40,5 @@ public class AddTaskViewModel extends ViewModel {
     public boolean taskAdded() {
         return addTaskModel.insertTaskSuccess(task);
     }
-
-//    public LiveData<List<Reminders>> getReminders() {
-//        mReminders = new MutableLiveData<>();
-//        mReminders.setValue(addTaskModel.getReminders());
-//        return mReminders;
-//    }
 
 }
